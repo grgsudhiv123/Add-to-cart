@@ -11,14 +11,17 @@ import Samosa from "../assets/Foodimg/samosa.png"
 import PaneerTikka from "../assets/Foodimg/paneertikka.jpg"
 import ButterChicken from "../assets/Foodimg/butterchicken.jpg"
 
-
+import plus from "../assets/addition.svg"
+import minus from "../assets/subtract.svg"
 
 
 export const icons = {
     cart : CartImg,
     Cross : Cross,
     EyeOpen : EyeOpen,
-    EyeClose : EyeClose
+    EyeClose : EyeClose,
+    plus : plus,
+    minus : minus,
 }
 
 

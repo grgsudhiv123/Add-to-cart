@@ -2,9 +2,13 @@ import Button from "./Button"
 import { icons } from "../constants/Constants"
 import { useState } from "react"
 
-const Cards = ({id,name,price,desc,bgimg}) => {
+const Cards = ({products}) => {
+    const { id, name, price, desc, bgimg } = products;
+
+
     const [eyeState, setEyeState] = useState(true)
-    const eyeToggle = () => {
+    const eyeToggle = (e) => {
+        e.stopPropagation();
         setEyeState(!eyeState);
     }
 
@@ -39,16 +43,16 @@ const Cards = ({id,name,price,desc,bgimg}) => {
             <div className="w-full flex flex-col gap-3">
                 <div className="w-full flex flex-row justify-between ">
                     <p className="text-slate-600 text-lg">Quantity</p>
-                    <p>{price}</p>
+                    <p>0</p>
                 </div>
                 <div className="w-full flex flex-row justify-between ">
                     <p className="text-slate-600 text-lg">Cost</p>
-                    <p>{price}</p>
+                    <p>0</p>
                 </div>
             </div>
             <div className="w-full flex flex-row justify-between gap-10">
-                <Button name='-' id={id} />
-                <Button name='+' id={id}/>
+                <Button name='-' products={products} key={`minus-${products.id}`}/>
+                <Button name='+' products={products} key={`plus-${products.id}`}/>
             </div>
         </div>
     </div>
