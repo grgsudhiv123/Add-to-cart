@@ -1,11 +1,13 @@
 import Button from "./Button"
 import { icons } from "../constants/Constants"
 import { useState } from "react"
+import { UseCart } from "../context/CartContext";
 
 const Cards = ({products}) => {
     const { id, name, price, desc, bgimg } = products;
 
-
+    const {cartItems} = UseCart()
+    const productIncart = cartItems.find((item) => item.id === products.id)
     const [eyeState, setEyeState] = useState(true)
     const eyeToggle = (e) => {
         e.stopPropagation();
@@ -43,16 +45,16 @@ const Cards = ({products}) => {
             <div className="w-full flex flex-col gap-3">
                 <div className="w-full flex flex-row justify-between ">
                     <p className="text-slate-600 text-lg">Quantity</p>
-                    <p>0</p>
+                    <p>{productIncart ? productIncart.quantity : 0}</p>
                 </div>
                 <div className="w-full flex flex-row justify-between ">
                     <p className="text-slate-600 text-lg">Cost</p>
-                    <p>0</p>
+                        <p>{productIncart ? productIncart.cost : 0}</p>
                 </div>
             </div>
             <div className="w-full flex flex-row justify-between gap-10">
-                <Button name='-' products={products} key={`minus-${products.id}`}/>
-                <Button name='+' products={products} key={`plus-${products.id}`}/>
+                <Button name='-' products={products}/>
+                <Button name='+' products={products} />
             </div>
         </div>
     </div>

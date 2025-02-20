@@ -13,6 +13,7 @@ import ButterChicken from "../assets/Foodimg/butterchicken.jpg"
 
 import plus from "../assets/addition.svg"
 import minus from "../assets/subtract.svg"
+import bin from "../assets/delete.png" 
 
 
 export const icons = {
@@ -22,6 +23,7 @@ export const icons = {
     EyeClose : EyeClose,
     plus : plus,
     minus : minus,
+    delete : bin,
 }
 
 

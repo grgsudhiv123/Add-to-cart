@@ -13,23 +13,21 @@ const CartContextProvider = ({children}) => {
     const [totalCost, setTotalCost] = useState(0)
 
     const addItem = (product) => {
-      console.log(product.name); // This will print once
+      console.log(product.name); 
       
       setCartItems(prevItems => {
         const itemIndex = prevItems.findIndex((item) => item.id === product.id);
-        console.log(itemIndex); // This should now print once
+        console.log(itemIndex); 
         
         let newItems;
         if (itemIndex !== -1) {
-          // Item already exists, update quantity
           newItems = [...prevItems];
           newItems[itemIndex].quantity += 1;
+          newItems[itemIndex].cost += product.price;
         } else {
-          // Item doesn't exist, add it with quantity 1
-          newItems = [...prevItems, { ...product, quantity: 1 }];
+          newItems = [...prevItems, { ...product, quantity: 1, cost : product.price }];
         }
         
-        // Calculate new totals after this update
         setTotalQuantity(prevQuantity => prevQuantity + 1);
         setTotalCost(prevCost => prevCost + product.price);
         
@@ -47,15 +45,15 @@ const CartContextProvider = ({children}) => {
 
             if (item.quantity > 1) {
               item.quantity -= 1;
+              item.cost -= product.price;
               setTotalQuantity(totalQuantity - 1);
               setTotalCost(totalCost - product.price);
             } else {
-              // Remove item if quantity is 1
               updatedItems.splice(itemIndex, 1);
               setTotalQuantity(totalQuantity - 1);
               setTotalCost(totalCost - product.price);
             }
-
+            console.log(updatedItems)
             return updatedItems;
           }
 
@@ -64,12 +62,7 @@ const CartContextProvider = ({children}) => {
       };
 
 
-
-    // const [cartItems, setCartItems] = useState();
-    // const addItem = () => {};
-    // const removeItem = () => {};
     const clearItems = () => setCartItems([]);
-
 
 
  return (

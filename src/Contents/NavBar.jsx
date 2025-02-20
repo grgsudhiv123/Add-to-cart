@@ -5,7 +5,6 @@ import { UseCart } from "../context/CartContext"
 const NavBar = () => { 
     const {sideBarToggle,setSideBarToggle, totalQuantity, totalCost} = UseCart();
     const handleClick = () => {
-
         setSideBarToggle(!sideBarToggle);
     }
   return (
