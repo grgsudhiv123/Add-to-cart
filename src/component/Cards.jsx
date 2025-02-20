@@ -2,6 +2,8 @@ import Button from "./Button"
 import { icons } from "../constants/Constants"
 import { useState } from "react"
 import { UseCart } from "../context/CartContext";
+import { Icon } from '@iconify/react';
+
 
 const Cards = ({products}) => {
     const { id, name, price, desc, bgimg } = products;
@@ -35,7 +37,7 @@ const Cards = ({products}) => {
             <div className="w-full flex justify-between items-center">
                 <div className="bg-green-200 hover:bg-slate-200 active:bg-slate-400 duration-200 p-2 rounded-full cursor-pointer" onClick={eyeToggle}>
                     {
-                        eyeState ? <img src={icons.EyeOpen} alt="" className="w-5 object-contain bg-cover"/> : <img src={icons.EyeClose} alt="" className="w-5 object-contain bg-cover"/>
+                        eyeState ? <Icon icon="clarity:eye-show-line" className="w-6 h-6" /> : <Icon icon="clarity:eye-hide-line" className="w-6 h-6" />
                     }
                     
                 </div>
